@@ -31,8 +31,8 @@ module.exports = function (source) {
     // Verify if file exists
     const filePath = path.resolve(options['src'], p1)
     if (fs.existsSync(filePath)) {
-      shasum = crypto.createHash(options['hash-algorithm'])
-      s = fs.readFileSync(filePath)
+      const shasum = crypto.createHash(options['hash-algorithm'])
+      const s = fs.readFileSync(filePath)
       shasum.update(s)
       const hash = shasum.digest('hex')
       return `"${p1}?${options['query-param-key']}=${hash.substring(
